@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col s12">
+   <h2>{{message}}</h2>
+   <p>{{subtitle}}</p>
+  </div>
+ </div>
+
+ <div class="row">   
+      <div class="col s4">
+    <form>
+     <div class="row">
+      <div class="input-field col s12">
+              <input required id="Usuario" type="text" class="validate" ng-value="nuevo.Usuario" ng-model="nuevo.Usuario">
+              <label for="Usuario">Usuario</label>
+            </div>
+     </div>
+
+     <div class="row">
+      <div class="input-field col s12">
+              <input required id="Clave" type="password" class="validate" ng-value="nuevo.Clave" ng-model="nuevo.Clave">
+              <label for="Clave">Clave</label>
+            </div>
+     </div>
+
+     <div class="row">
+      <div class="input-field col s12">
+              <input required id="Estatus" type="text" class="validate" ng-value="nuevo.Status" ng-model="nuevo.Status">
+              <label for="Estatus">Estatus</label>
+            </div>
+     </div>
+
+     <div class="row">
+      <div class="col-s4" ng-if="nuevo.Id == null">
+       <button class="btn waves-effect blue" ng-click="post()">Submit</button>
+      </div>
+
+      <div class="col-s4" ng-if="nuevo.Id != null">
+       <button class="btn waves-effect blue" ng-click="put(nuevo.Id)">Submit</button>
+      </div>
+     
+     </div>
+       </form>
+
+
+      </div>
+      <div class="col s8">
+      <input type="text" ng-model="search" placeholder="Buscar">
+    
+
+
+       <table class="highlight responsive-table">
+        <thead>
+         <tr>
+          <th>ID</th>
+          <th>Usuario</th>
+          <th>Clave</th>
+          <th>Estatus</th>
+          <th></th>
+          <th></th>
+         </tr>
+        </thead>
+
+        <tbody ng-if="lista.length != null">
+         <tr ng-click="get(x.Id)" ng-repeat="x in lista | filter : search">
+          <td>{{x.Id}}</td>
+          <td>{{x.Usuario}}</td>
+          <td>{{x.Clave}}</td>
+          <td>{{x.Status}}</td>
+          <td><button class="btn btn-small waves-effect red" ng-click="delete(x.Id)">eliminar</button></td>
+         </tr>
+        </tbody>
+
+        <tbody ng-if="lista.length == null">
+         <tr>
+          <td colspan="4">No hay datos dispobibles</td>
+         </tr>
+        </tbody>
+
+
+       </table>
+      </div>
+     </div>

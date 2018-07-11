@@ -32,16 +32,21 @@
 
     $bodyRequest = file_get_contents("php://input");
 
-    $array = json_decode($bodyRequest,true);
-    $array_keys = array_keys($array);
-    $array_values = array_values($array);
 
-    echo "Keys: <br/>";
-    print_r($array_keys);
-    echo "Values: <br/>";
-    print_r($array_values);
-    echo "RenderizeData:"."<br/>";
- 	echo renderizeData($array_keys,$array_values);
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+    	$array = json_decode($bodyRequest,true);
+    	$array_keys = array_keys($array);
+    	$array_values = array_values($array);
+
+    	echo "Keys: <br/>";
+    	print_r($array_keys);
+    	echo "Values: <br/>";
+    	print_r($array_values);
+    	echo "RenderizeData:"."<br/>";
+ 		echo renderizeData($array_keys,$array_values);
+    }
+
+    
 
     function renderizeData($keys, $values) {
       $str = '';
