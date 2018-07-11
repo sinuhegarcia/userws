@@ -1,0 +1,21 @@
+#Se establece la ruta como archivo principal o pagina principal
+DirectoryIndex public_html/index.html
+
+RewriteEngine On
+
+#Para método POST, GET y PUT
+RewriteRule ^api/([a-zA-Z]+)$ controller.php
+RewriteRule ^api/([a-zA-Z]+)/$ controller.php
+
+#para método GET, POST, PUT
+RewriteRule ^api/([a-zA-Z]+)$ controller.php
+RewriteRule ^api/([a-zA-Z]+)/$ controller.php
+
+#Para método GET por Id y método DELETE
+RewriteRule ^api/([a-zA-Z]+)/([0-9]+)$ controller.php
+RewriteRule ^api/([a-zA-Z]+)/([0-9]+)/$ controller.php
+
+#Expresiones regulares
+## Alfanumericos | ([a-zA-Z0-9]+)
+## Numericos | ([0-9]+)
+## Caracteres ([a-zA-Z]+)
